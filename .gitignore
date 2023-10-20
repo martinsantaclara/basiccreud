@@ -18,6 +18,10 @@
 # misc
 .DS_Store
 *.pem
+createdomain.js
+
+/interceptor
+/react-email-starter
 
 # debug
 npm-debug.log*
@@ -25,7 +29,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+.env
+.env.production
 
 # vercel
 .vercel

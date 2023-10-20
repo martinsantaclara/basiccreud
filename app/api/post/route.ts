@@ -3,9 +3,9 @@ import prisma from '@/lib/prisma';
 import {post} from '@prisma/client';
 
 export async function POST(request: Request) {
-    // const { ApellidoVendedor, NombreVendedor, Agencia } = req.body;
     const data: post = await request.json();
-    const {creator, prompt, tag} = data;
+    const {prompt, tag, creator} = data;
+
     // const date3 = new Date();
     // const createdAt = new Date(
     //     date3.getTime() - date3.getTimezoneOffset() * 60 * 1000
@@ -22,10 +22,10 @@ export async function POST(request: Request) {
     try {
         let nuevoPost = await prisma.post.create({
             data: {
-                creator,
                 prompt,
                 tag,
                 createdAt,
+                creator,
             },
         });
         return NextResponse.json({mesagge: 'Joya post'}, {status: 201});
@@ -39,8 +39,6 @@ export async function POST(request: Request) {
 export async function PATCH(request: Request) {
     const data: post = await request.json();
     const {id, prompt, tag} = data;
-
-    console.log({id, prompt, tag}, 'PATCH request');
 
     try {
         const updatePost = await prisma.post.update({
@@ -64,8 +62,6 @@ export async function PATCH(request: Request) {
 export async function PUT(request: Request) {
     const data: post = await request.json();
     const {id, prompt, tag} = data;
-
-    console.log(data, 'PUT request');
 
     try {
         const updatePost = await prisma.post.update({

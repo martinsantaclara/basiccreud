@@ -15,14 +15,15 @@
 
 type PostWithUsers = {
     user: {
-        id: number;
-        email: string;
-        username: string;
-        image: string;
+        id: string;
+        email: string | null;
+        name: string | null;
+        image: string | null;
+        emailVerified: Date | null;
     };
 } & {
     id: number;
-    creator: number;
+    creator: string;
     prompt: string;
     tag: string;
     createdAt: Date;
